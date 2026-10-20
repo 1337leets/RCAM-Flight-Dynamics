@@ -6,33 +6,3 @@
 *.slxc
 slprj/
 octave-workspace
-
-# Generated output (reproducible from the source)
-*.png
-*.pdf
-*.fig
-# except the README figures in docs/
-!docs/*.png
-
-# OS
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Editors
-.vscode/
-.idea/
-
-# Local Claude Code notes
-CLAUDE.md
-
-# Copyrighted or personal material, never committed
-*AUTO_FLIGHT*
-*AUTO?FLIGHT*
-*ELECTRICAL_POWER*
-*ELECTRICAL?POWER*
-*Staj*
-*staj*
-*TTM*
-*.pptx
-*.docx
