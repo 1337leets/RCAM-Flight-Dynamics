@@ -1,5 +1,7 @@
 # RCAM Flight Dynamics
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23842003.svg)](https://doi.org/10.5281/zenodo.23842003)
+
 Nonlinear 6-DOF simulation, modal analysis and a gain-scheduled yaw damper
 for the GARTEUR Research Civil Aircraft Model (RCAM), written in plain MATLAB.
 

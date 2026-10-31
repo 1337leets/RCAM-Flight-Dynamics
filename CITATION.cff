@@ -7,6 +7,7 @@ authors:
   - family-names: "Sarı"
     given-names: "Samet Erhan"
     orcid: "https://orcid.org/0009-0008-0196-182X"
+doi: "10.5281/zenodo.23842003"
 repository-code: "https://github.com/1337leets/RCAM-Flight-Dynamics"
 license: Apache-2.0
 keywords:
