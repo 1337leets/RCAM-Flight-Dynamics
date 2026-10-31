@@ -44,6 +44,8 @@ scripts/
   main.m                   Driver script
 tests/
   test_dynamics.m          Physical consistency tests (7 tests)
+crosscheck/
+  rcam_crosscheck.py       Separate Python re-implementation for comparison
 docs/
   yaw_damper.png             Output of yaw_damper_demo
   speed_sweep.png            Output of speed_sweep
@@ -57,6 +59,7 @@ docs/
 - MATLAB R2020a or newer (for `exportgraphics` and `tiledlayout`).
   No toolboxes are needed, only core functions such as `eig` and
   `fminsearch`.
+- Python with numpy and scipy, only for `crosscheck/rcam_crosscheck.py`.
 
 ## Quick start
 From the repository root:
@@ -86,6 +89,9 @@ test_dynamics
 | Phugoid | -0.015 ± 0.135j | 0.136 | 0.109 |
 
 Trim: alpha = 0.86 deg, uE = -10.20 deg, uTH = 4.70 deg (both engines).
+
+At 80 m/s, the design speed used by Looye et al. (1998), the Dutch roll is
+-0.273 ± 0.738j with wn = 0.787 rad/s and zeta = 0.347.
 
 ### Yaw damper
 The control law is δR,cmd = Kr · s/(s + a) · r, and the rudder actuator is
@@ -213,8 +219,11 @@ went from 0.10 to 0.34, and the spiral time constant from 1.7 s to 9.2 s.
   ωn ≈ √2·g/V = 0.163 rad/s, which ignores drag and compressibility
 - In symmetric trim the longitudinal and lateral dynamics decouple
   exactly (the cross-coupling terms of A are zero)
-- The modal structure can be cross-checked against independent RCAM
-  implementations
+- Cross-checked against a separate open implementation
+  (reggiejohanes/RCAM, MATLAB/Simulink). Its equations were re-implemented
+  in Python (`crosscheck/rcam_crosscheck.py`), and the trim and the eight
+  lateral and longitudinal eigenvalues at 85 m/s match the results table to
+  the reported precision.
 
 ## Known limitations
 - The kinematics use Euler angles and are singular at θ = ±90 deg.
@@ -230,6 +239,9 @@ went from 0.10 to 0.34, and the spiral time constant from 1.7 s to 9.2 s.
 - In the low q̄, high alpha corner a rudder-only damper cannot add
   damping (see Gain scheduling).
 - Constant air density by default, and no wind or turbulence.
+- The centre of gravity height follows the 1997 revision (Zcg = 0.10c̄).
+  Looye et al. (1998) list Zcg = 0 as the nominal value. With Zcg = 0 the
+  Dutch roll damping at 80 m/s changes from 0.347 to 0.358.
 
 ## Parameter source and verification notes
 The model follows the **revised RCAM definition (February 1997)** as it
@@ -262,6 +274,12 @@ against the 1997 document itself is still open.
   [github.com/flight-test-engineering/PSim-RCAM](https://github.com/flight-test-engineering/PSim-RCAM)
 - Aircraft-Simulation-Control, an RCAM_model.m implementation.
   [github.com/dongwoo0813/Aircraft-Simulation-Control](https://github.com/dongwoo0813/Aircraft-Simulation-Control)
+- R. Johanes, RCAM, a MATLAB/Simulink implementation.
+  [github.com/reggiejohanes/RCAM](https://github.com/reggiejohanes/RCAM)
+- G. Looye, S. Bennani, A. Varga, D. Moormann, G. Grübel, *Robustness
+  Assessment of Flight Controllers for a Civil Aircraft using µ-Analysis*,
+  7th Benelux Meeting on Systems and Control, Mierlo, 1998.
+  [elib.dlr.de](https://elib.dlr.de/3459/)
 - MIL-F-8785C, *Flying Qualities of Piloted Airplanes*, 1980. The Dutch
   roll damping limits quoted here (Level 1) have not been re-checked
   against the standard in this repository.
