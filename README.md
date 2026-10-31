@@ -3,10 +3,6 @@
 Nonlinear 6-DOF simulation, modal analysis and a gain-scheduled yaw damper
 for the GARTEUR Research Civil Aircraft Model (RCAM), written in plain MATLAB.
 
-This repository is the open-source core of an aircraft flight control
-research project (working title *rcam-rta*: RCAM + Run-Time Assurance).
-The run-time assurance part is not included here.
-
 ## Contents
 - Nonlinear longitudinal and lateral-directional aircraft dynamics
 - Trim solver for straight and level flight
@@ -292,4 +288,4 @@ against the 1997 document itself is still open.
   Challenge*, LNCIS 224, Springer, 1997.
 
 ## License
-Apache License 2.0 (see LICENSE). Copyright 2026 1337leets.
+Apache License 2.0 (see LICENSE). Copyright 2026 Samet Erhan Sarı.
