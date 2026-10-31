@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using these metadata."
+title: "RCAM Flight Dynamics"
+type: software
+abstract: "Nonlinear 6-DOF simulation, modal analysis and a gain-scheduled yaw damper for the GARTEUR Research Civil Aircraft Model (RCAM), written in plain MATLAB."
+authors:
+  - family-names: "Sarı"
+    given-names: "Samet Erhan"
+    orcid: "https://orcid.org/0009-0008-0196-182X"
+repository-code: "https://github.com/1337leets/RCAM-Flight-Dynamics"
+license: Apache-2.0
+keywords:
+  - flight dynamics
+  - RCAM
+  - flight control
+  - simulation
